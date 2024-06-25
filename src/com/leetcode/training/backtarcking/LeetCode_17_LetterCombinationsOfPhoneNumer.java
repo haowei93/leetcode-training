@@ -12,7 +12,7 @@ public class LeetCode_17_LetterCombinationsOfPhoneNumer {
 
     public static void main(String[] args) {
         LeetCode_17_LetterCombinationsOfPhoneNumer client = new LeetCode_17_LetterCombinationsOfPhoneNumer();
-        List<String> res = client.letterCombinations("23");
+        List<String> res = client.letterCombinations("2");
         System.out.println(res);
     }
     // 每个数字到字母的映射
