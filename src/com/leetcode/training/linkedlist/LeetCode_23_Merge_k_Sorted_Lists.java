@@ -16,18 +16,7 @@ public class LeetCode_23_Merge_k_Sorted_Lists {
         if (lists == null || lists.length == 0) {
             return null;
         }
-        PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, new Comparator<ListNode>() {
-            @Override
-            public int compare(ListNode o1, ListNode o2) {
-                if(o1.val  < o2.val) {
-                    return -1;
-                } else  if(o1.val  > o2.val){
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
-        });
+        PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, Comparator.comparingInt(o -> o.val));
 
         for(ListNode node : lists) {
             if(node != null) {

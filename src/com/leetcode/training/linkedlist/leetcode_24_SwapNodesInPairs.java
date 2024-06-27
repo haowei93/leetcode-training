@@ -24,9 +24,11 @@ class leetcode_24_SwapNodesInPairs {
         while (cur.next != null && cur.next.next != null) {
             ListNode first = cur.next;
             ListNode second = first.next;
+            // 反转
             first.next = second.next;
             second.next = first;
             cur.next = second;
+            // 移动
             cur = first;
         }
         return dummyHead.next;
