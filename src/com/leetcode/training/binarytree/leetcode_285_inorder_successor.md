@@ -11,6 +11,7 @@ public class LeetCode_285_InorderSuccessor {
     public TreeNode findPrecursor(TreeNode root, TreeNode p) {
         if (root == null || p == null) return null;
         TreeNode t = null;
+        // 如果当前节点有左子树，找到左子树的最右节点
         while (root != null) {
             if (root.val >= p.val) {
                 root = root.left;
