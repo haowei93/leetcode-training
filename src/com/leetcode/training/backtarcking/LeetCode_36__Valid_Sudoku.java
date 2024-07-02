@@ -15,16 +15,16 @@ public class LeetCode_36__Valid_Sudoku {
     public static void main(String[] args) {
         LeetCode_36__Valid_Sudoku client = new LeetCode_36__Valid_Sudoku();
 
-        char[][] board = {
-                {'.', '.', '4', '.', '.', '.', '6', '3', '.'},
-                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-                {'5', '.', '.', '.', '.', '.', '.', '9', '.'},
-                {'.', '.', '.', '5', '6', '.', '.', '.', '.'},
-                {'4', '.', '3', '.', '.', '.', '.', '.', '1'},
-                {'.', '.', '.', '7', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '5', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '.', '.', '.', '.', '.'},
-                {'.', '.', '.', '.', '.', '.', '.', '.', '.'}};
+        char[][] board = new char[][]{
+                {'.', '8', '7', '6', '5', '4', '3', '2', '1'},
+                {'2', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'7', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'8', '.', '.', '.', '.', '.', '.', '.', '.'},
+                {'9', '.', '.', '.', '.', '.', '.', '.', '.'}};
 
         System.out.println(client.isValidSudoku(board));
     }
@@ -38,16 +38,17 @@ public class LeetCode_36__Valid_Sudoku {
             areaSee.put(i, new HashSet<>());
         }
 
-
         for (int i = 0; i < board[0].length; i++) {
             for (int j = 0; j < board.length; j++) {
                 char curr = board[i][j];
                 if (curr != '.') {
-                    if (rowSee.get(i).contains(curr) || colSee.get(j).contains(curr) || areaSee.get(i / 3 * 3 + j / 3).contains(curr)) {
+                    if (rowSee.get(i).contains(curr) ||
+                            colSee.get(j).contains(curr) ||
+                            areaSee.get(i / 3 * 3 + j / 3).contains(curr)) {
                         return false;
                     }
                     rowSee.get(i).add(curr);
-                    colSee.get(i).add(curr);
+                    colSee.get(j).add(curr);
                     areaSee.get(i / 3 * 3 + j / 3).add(curr);
                 }
 
