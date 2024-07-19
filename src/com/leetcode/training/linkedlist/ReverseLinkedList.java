@@ -12,7 +12,9 @@ public class ReverseLinkedList {
         if (head == null) {
             return head;
         }
-        // 1,2,3,4,5
+        // 1->2->3->4->5
+        // null<-1 2->3->4->5
+        // null<-1<-2 3->4->5
         ListNode pre = null, next = null;
         while (head != null) {
             next = head.next;
