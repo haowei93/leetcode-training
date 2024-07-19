@@ -7,8 +7,15 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        System.out.println(countNum2(new int[]{1, 2, 3, 4, 5}));
-        System.out.println(countNum2(new int[]{1, 2, 3, 4, 5}));
+        int[] res = countNum(new int[]{1, 2, 3, 4, 5});
+        for (int re : res) {
+            System.out.print(re + " ");
+        }
+        System.out.println();
+        res = countNum2(new int[]{1, 2, 3, 4, 5});
+        for (int re : res) {
+            System.out.print(re + " ");
+        }
 
     }
 
@@ -19,7 +26,7 @@ public class Solution {
     public static int[] countNum(int[] nums) {
         int maxValue = Integer.MIN_VALUE;
         int[] result = new int[3];
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length-1; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (maxValue < nums[i] + nums[j]) {
                     // 临时存储当前结果
@@ -34,17 +41,18 @@ public class Solution {
     public static int[] countNum2(int[] nums) {
 
         int firstNum = Integer.MIN_VALUE;
-        int firstIndex = 0;
+        int firstIndex = -1;
 
         int secondNum = Integer.MIN_VALUE;
-        int secondIndex = 0;
+        int secondIndex = -1;
 
         for (int i = 0; i < nums.length; i++) {
-            if (firstNum < nums[i]) {
+            if (nums[i] > firstNum) {
+                secondNum = firstNum;
+                secondIndex = firstIndex;
                 firstNum = nums[i];
                 firstIndex = i;
-            }
-            if (secondNum <= firstNum && firstIndex != secondIndex) {
+            } else if (nums[i] > secondNum && i != firstIndex) {
                 secondNum = nums[i];
                 secondIndex = i;
             }
